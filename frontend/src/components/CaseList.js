@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getCases, updateCase, deleteCase, createCase } from '../services/caseService.js';
+import { getCases, updateCase, deleteCase } from '../services/caseService.js';
 import { useNavigate } from 'react-router-dom';
 
 function CaseList() {
