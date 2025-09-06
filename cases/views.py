@@ -96,15 +96,23 @@ def case_prioritization(request):
     
     return Response(prioritized_case, status=200)
 
+
 class RegisterView(APIView):
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key, 'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
+            
+            # Determine user type based on whether they have a lawyer profile
+            user_type = 'Law Firm' if hasattr(user, 'lawyer_profile') else 'regular'
+            
+            return Response({
+                'token': token.key,
+                'userType': user_type,
+                'message': 'User registered successfully'
+            }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 
 class LoginView(APIView):
@@ -113,11 +121,13 @@ class LoginView(APIView):
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
-        user_type = request.data.get('userType')
-
         user = authenticate(username=username, password=password)
         if user:
             token, _ = Token.objects.get_or_create(user=user)
+            
+            # Determine actual user type based on database, not frontend input
+            user_type = 'Law Firm' if hasattr(user, 'lawyer_profile') else 'regular'
+            
             return Response({
                 'token': token.key,
                 'username': user.username,
