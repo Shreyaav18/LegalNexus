@@ -10,6 +10,8 @@ function Register() {
       email: '',
       password: '',
       confirm: '',
+      dob: '',
+      userType: 'regular'
     });
   
     const navigate = useNavigate();
@@ -21,9 +23,15 @@ function Register() {
   
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Check if passwords match
+        if (details.password !== details.confirm) {
+            alert("Passwords don't match!");
+            return;
+        }
       
         const payload = {
-          username: details.username,  // ✅ must match serializer
+          username: details.username,
           email: details.email,
           password: details.password
         };
@@ -39,7 +47,7 @@ function Register() {
           console.log("Response:", data);
       
           if (response.ok) {
-            alert("Registered!");
+            alert("Registered successfully!");
             localStorage.setItem("token", data.token);
             navigate("/login");
           } else {
@@ -72,37 +80,76 @@ function Register() {
 
                 <form onSubmit={handleSubmit}>
                     <div className='mb-3'>
-                        <label className='form-label'>Name</label>
-                        <input type='text' name='user_name' value={details.user_name} onChange={handleChange} className='form-control' required>
-
-                        </input>
+                        <label className='form-label'>Username</label>
+                        <input 
+                            type='text' 
+                            name='username' 
+                            value={details.username} 
+                            onChange={handleChange} 
+                            className='form-control' 
+                            required
+                        />
                     </div>
 
                     <div className='mb-3'>
-                        <label className='form-label'> Email</label>
-                        <input type='email' value={details.user_email} name='user_email' onChange={handleChange} className='form-control' required></input>
+                        <label className='form-label'>Email</label>
+                        <input 
+                            type='email' 
+                            value={details.email} 
+                            name='email' 
+                            onChange={handleChange} 
+                            className='form-control' 
+                            required
+                        />
                     </div>
 
                     <div className='mb-3'>
-                        <label className='form-label'> Password</label>
-                        <input type='password' name='user_password' value={details.user_password} onChange={handleChange} className='form-control' required></input>
+                        <label className='form-label'>Password</label>
+                        <input 
+                            type='password' 
+                            name='password' 
+                            value={details.password} 
+                            onChange={handleChange} 
+                            className='form-control' 
+                            required
+                        />
                     </div>
 
                     <div className='mb-3'>
-                        <label className='form-label'>Re-enter your password</label>
-                        <input type='password' name='user_confirm' value={details.user_confirm} onChange={handleChange} className='form-control' required></input>
+                        <label className='form-label'>Confirm Password</label>
+                        <input 
+                            type='password' 
+                            name='confirm' 
+                            value={details.confirm} 
+                            onChange={handleChange} 
+                            className='form-control' 
+                            required
+                        />
                     </div>
 
                     <div className='mb-3'>
-                        <label className='form-label'> Date of Birth</label>
-                        <input type='date' name='user_dob' value={details.user_dob} onChange={handleChange} className='form-control' required></input>
+                        <label className='form-label'>Date of Birth</label>
+                        <input 
+                            type='date' 
+                            name='dob' 
+                            value={details.dob} 
+                            onChange={handleChange} 
+                            className='form-control' 
+                            required
+                        />
                     </div>
 
                     <div className='mb-3'>
-                        <label classname='form-label'>User type</label>
-                        <select name='user_type' value={details.user_type} onChange={handleChange} className='=form-control' required>
-                            <option value="regular">Users</option>
-                            <option value="judicial department"> Law Firm</option>
+                        <label className='form-label'>User Type</label>
+                        <select 
+                            name='userType' 
+                            value={details.userType} 
+                            onChange={handleChange} 
+                            className='form-control' 
+                            required
+                        >
+                            <option value="regular">Regular User</option>
+                            <option value="Law Firm">Law Firm</option>
                         </select>
                     </div>
 
@@ -111,6 +158,5 @@ function Register() {
             </div></>
     )
 }
-
 
 export default Register;

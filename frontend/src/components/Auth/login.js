@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
 function LoginPage() {
-  const[userType, setUserType]=useState('Law Firm');
+  const[userType, setUserType]=useState('regular');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -41,13 +41,10 @@ function LoginPage() {
     }
   };
 
-  
-  
-
   return (
     <div className="min-vh-100 bg-light text-dark">
       {/* Header */}
-      <header className="bg-d text-white p-3 d-flex align-items-center justify-content-between" >
+      <header className="bg-primary text-white p-3 d-flex align-items-center justify-content-between" >
         <div className="d-flex align-items-center">
           <FaBalanceScale size={32} className="me-2" />
           <h1 className="h4">Justice Platform</h1>
@@ -66,21 +63,21 @@ function LoginPage() {
 
         <div style={{ backgroundColor: '#e7f3fe', border: '1px solid #2196f3', padding: '10px', marginBottom: '20px', borderRadius: '5px' }}>
         <strong>Demo Credentials:</strong><br />
-        <b>Law Firm:</b> <code>demo_lawfirm@gmail.com</code> / <code>password123</code><br />
-        <b>Regular User:</b> <code>demo_user@gmail.com</code> / <code>password123</code>
+        <b>Law Firm:</b> <code>demo_lawfirm</code> / <code>password123</code><br />
+        <b>Regular User:</b> <code>demo_user</code> / <code>password123</code>
       </div>
         <form onSubmit={handleSubmit} className="bg-white p-4 rounded shadow w-100" style={{ maxWidth: '400px' }}>
 
           <div className='mb-3'>
             <label className="form-label">User Type: </label>
             <select name="userType" value={userType} onChange={(e)  => setUserType(e.target.value)} className="form-select">
-              <option value="regular">Users</option>
-              <option value="Law Firm"> Law Firm</option>
+              <option value="regular">Regular User</option>
+              <option value="Law Firm">Law Firm</option>
             </select> 
           </div>
         
           <div className="mb-3">
-            <label className="form-label">Email</label>
+            <label className="form-label">Username</label>
             <input
               type="text"
               value={username}
@@ -101,7 +98,7 @@ function LoginPage() {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary w-100">
               Login
             </button>
         </form>
