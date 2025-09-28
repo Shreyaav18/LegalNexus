@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, Link } from "react-router-dom";
-import LoginPage from "../components/Auth/login.js";
-import Register from "../components/Auth/register.js";
+
 
 export default function LawFirmHomePage() {
   const [legalTip] = useState("Always read contracts thoroughly before signing.");
@@ -20,6 +19,14 @@ export default function LawFirmHomePage() {
             <li className="nav-item">
               <a className="nav-link" href="#">Home</a>
             </li>
+
+            <li className="nav-item">
+            <Link to="/Priority-dashboard" className="btn btn-light me-2 px-4 py-2 rounded-pill fw-semibold shadow-sm">
+              Priority Dashboard
+            </Link>
+
+            </li>
+
             <li className="nav-item">
             <Link to="/lawfirmdashboard" className="btn btn-light me-2 px-4 py-2 rounded-pill fw-semibold shadow-sm">
               Law Firm Dashboard
