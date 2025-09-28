@@ -28,4 +28,4 @@ yarn-error.log*
 # Ignore SQLite database files
 *.sqlite3
 # or specifically for Django/Rails default:
-# db.sqlite3
+db.sqlite3
