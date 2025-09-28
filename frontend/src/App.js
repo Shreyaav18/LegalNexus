@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import CaseList from './components/CaseList.js';
 import CaseForm from './components/CaseForm.js';
 import WelcomePage from './pages/WelcomePage.js';
@@ -8,6 +9,7 @@ import Register from './components/Auth/register.js';
 import LawFirmHomePage from './pages/WelcomePage.js';
 import LawFirmDashboard from './pages/LawFirmDashboard.js';
 import UserDashboard from './pages/userDasboard.js';
+import CasePriorityDashboard from './pages/CasePriorityDashboard.js';
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
           <Route path="/lawfirmdashboard" element={<LawFirmDashboard />} />
           <Route path="/create-case" element={<CaseForm />} />
           <Route path="/" element={<LawFirmHomePage />} />
+          <Route path="/Priority-dashboard" element={<CasePriorityDashboard />} />
         </Routes>
       </div>
     </Router>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AlertTriangle, Clock, User, Calendar, FileText, TrendingUp } from 'lucide-react';
+import './CasePriorityDashboard.css';
 
 const CasePriorityDashboard = () => {
   const [cases, setCases] = useState([]);

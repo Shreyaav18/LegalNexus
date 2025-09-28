@@ -68,10 +68,12 @@ CORS_ALLOWED_ORIGINS = [
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://localhost:8000',
-    'http://localhost:3000',  # if you're using React dev server too
+    'http://localhost:3000',
+    "http://127.0.0.1:3000" # if you're using React dev server too
 ]
 TEMPLATES = [
     {
@@ -97,18 +99,11 @@ WSGI_APPLICATION = 'case_prioritization.wsgi.application'
 
 
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('SUPABASE_DB_NAME'),
-            'USER': os.environ.get('SUPABASE_DB_USER'),
-            'PASSWORD': os.environ.get('SUPABASE_DB_PASSWORD'),
-            'HOST': os.environ.get('SUPABASE_DB_HOST'),
-            'PORT': os.environ.get('SUPABASE_DB_PORT', '5432'),
-            'OPTIONS': {
-                'sslmode': 'require',
-            },
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
 
 REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
 
@@ -132,7 +127,9 @@ CHANNEL_LAYERS = {
     },
 }
 
-#AUTH_USER_MODEL = 'users.User'
+
+
+AUTH_USER_MODEL = 'cases.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
