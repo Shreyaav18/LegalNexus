@@ -1,4 +1,4 @@
-# LegalNexus ⚖️  
+# LegalNexus 
 An AI-powered Case Prioritization system designed to assist law firms and regular users in managing and prioritizing legal cases efficiently.
 
 ## 🚀 Project Overview
@@ -16,16 +16,6 @@ It enables:
 - **Backend**: Django, Django REST Framework
 - **Database**: SQLite (for development)
 - **Authentication**: Token-based Auth (no CSRF for simplicity)
-
-## 📂 Folder Structure
-LegalNexus/ 
-├── backend/ # Django Backend (case_prioritization) 
-│ └── cases/ # App containing models, views, serializers 
-├── frontend/ # React Frontend
-│ └── src/ # Components and pages
-├── manage.py
-├── README.md └── requirements.txt
-
 
  ** AI Features
 The AI-based prioritization algorithm is designed to:
