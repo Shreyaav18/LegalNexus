@@ -17,11 +17,10 @@ It enables:
 - **Database**: SQLite (for development)
 - **Authentication**: Token-based Auth (no CSRF for simplicity)
 
- ** AI Features
+## AI Features
 The AI-based prioritization algorithm is designed to:
 
-Analyze urgency, category, and history of each case
-
-Help law firms allocate resources to high-priority cases
+- Analyze urgency, category, and history of each case
+- Help law firms allocate resources to high-priority cases
 
 (Coming soon: ML integration with pandas & NumPy!)
